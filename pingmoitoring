@@ -1,0 +1,17 @@
+import subprocess
+import time
+
+# list of hosts to be monitored
+hosts = ["8.8.8.8", "8.8.4.4", "192.168.1.1"]
+
+while True:
+    for host in hosts:
+        response = subprocess.run(["ping", "-c", "1", "-W", "2", host], capture_output=True)
+
+        if response.returncode == 0:
+            print(f"{host} is up")
+        else:
+            print(f"{host} is down")
+
+    # wait for 60 seconds before next check
+    time.sleep(60)

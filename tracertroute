@@ -1,0 +1,11 @@
+import subprocess
+
+# host to run traceroute on
+host = "www.google.com"
+
+# run traceroute command
+result = subprocess.run(["traceroute", host], capture_output=True, text=True)
+
+# print traceroute output
+print(result.stdout)
+
